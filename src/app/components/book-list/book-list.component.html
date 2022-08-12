@@ -1,0 +1,9 @@
+<h2>Book List</h2>
+
+<div *ngFor="let book of books | async">
+    <h3>
+      <a [title]="book.name + ' details'" [routerLink]="['/books', book.id]">
+        <span>Book name:</span> {{ book.name }}
+      </a>
+    </h3>
+  </div>

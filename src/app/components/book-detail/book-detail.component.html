@@ -1,0 +1,9 @@
+<h2>Book Details</h2>
+
+<div *ngIf="book">
+  <h3>{{ book.name }}</h3>
+  <h3>{{ book.price | currency }}</h3>
+  <button type="button" (click)="Remove(book)">Remove</button>
+  <a style="margin-left: 1em;" class="button" [title]="book.name + ' details'" [routerLink]="['/book', book.id]"
+    >Update</a>
+</div>
