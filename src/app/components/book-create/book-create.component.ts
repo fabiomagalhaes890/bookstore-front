@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/book-service/book.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class BookCreateComponent {
 
   constructor(
     private bookService: BookService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   onSubmit() {
     this.bookService.postBook(this.bookForm);
     console.warn('Your order has been submitted', this.bookForm.value);
     this.bookForm.reset();
+    this.router.navigateByUrl('');
   }
 }

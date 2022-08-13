@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book-service/book.service';
 
@@ -20,13 +20,15 @@ export class BookUpdateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   onSubmit() {
     this.bookService.putBook(this.bookForm);
     console.warn('Your order has been updated', this.bookForm.value);
     this.bookForm.reset();
+    this.router.navigateByUrl('');
   }
 
   ngOnInit(): void {

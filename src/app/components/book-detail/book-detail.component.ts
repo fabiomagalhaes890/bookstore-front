@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book-service/book.service';
 
@@ -13,12 +13,14 @@ export class BookDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService,
+    private router: Router
   ) {}
 
   Remove(book: Book) {
     this.bookService.deleteBook(book.id);
     window.alert('Your book has been removed.');
+    this.router.navigateByUrl('');
   }
 
   ngOnInit() {
